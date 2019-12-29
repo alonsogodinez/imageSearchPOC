@@ -15,6 +15,7 @@ dbUtils.setDBListeners();
 const indexRouter = require('./routes');
 
 const app = express();
+const reactAppPath =  path.join(__dirname, '../client/build')
 
 // view engine setup
 
@@ -22,14 +23,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(reactAppPath));
 
 
 
 app.use('/', indexRouter);
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(reactAppPath + '/index.html');
 });
 
 // catch 404 and forward to error handler
