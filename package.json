@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "heroku-prebuild": "cd client && yarn install",
+    "heroku-postbuild": "cd server && yarn install",
     "build": "cd client && yarn build",
     "start-server": "cd server && yarn start",
     "start-server:dev": "cd server && yarn dev",
