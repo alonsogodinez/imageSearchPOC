@@ -8,6 +8,6 @@ module.exports.upload = multer({
     s3: s3.getInstance(),
     bucket: s3.getBucket(),
     acl: 'public-read',
-    key: (req, file, cb) => cb(null, Date.now().toString())
+    key: (req, file, cb) => cb(null, Date.now().toString() + '.' + file.mimetype.split('/')[1])
   })
 })

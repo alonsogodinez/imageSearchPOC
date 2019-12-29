@@ -5,22 +5,32 @@ import ResultList from './components/ResultList/ResultList'
 import UploadModal from './components/UploadModal/UploadModal'
 
 function App() {
-  const [searchText, setSearchText] = useState("")
+  const [searchText, setSearchText] = useState('')
   const [results, setResults] = useState([])
   const [isUploadModalOpen, setUploadModalOpen] = useState(false);
 
-  const getImages = () => {
+  const getImages = (force= searchText.length === 0) => {
     (async () => {
       try {
-        const {images} = await (await fetch("/search")).json()
-        return setResults(images)
-      } catch(e) {
-        console.log(e)
+        let URL = "/search"
+        if (searchText.trim()) {
+          URL += `?searchText=${searchText}`
+        }
+        if (searchText.trim() || force) {
+          const {images} = await (await fetch(URL)).json()
+          return setResults(images)
+        }
+      }
+      catch(e) {
+          console.log(e)
       }
     })()
   }
 
+
+  useEffect(() => getImages(), [])
   useEffect(() => getImages(), [searchText])
+
   return (
     <main className="App">
       <SearchBar

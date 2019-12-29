@@ -10,20 +10,31 @@ import {DropzoneDialog} from 'material-ui-dropzone'
 
 export default function UploadModal({ isUploadModalOpen, setUploadModalOpen}) {
 
+  const uploadImages = (images) => {
+    const formData = new FormData();
+    images.forEach(image =>  formData.append('image', image))
+    fetch("/upload", {
+      method: 'POST',
+      body: formData
+    }).then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => console.log('Success:', response));
+
+  }
+
   return (
     <div>
       <DropzoneDialog
         open={isUploadModalOpen}
         dialogTitle="Upload an Image"
         dropzoneText="Drag an image here or click"
-        onSave={() => {}}
-        filesLimit={1}
+        onSave={uploadImages}
+        filesLimit={3}
         showPreviewsInDropzone={true}
         showPreviews={false}
         acceptedFiles={['image/*']}
-
         maxFileSize={5000000}
-        onClose={() => setUploadModalOpen(false)}></DropzoneDialog>
+        onClose={() => setUploadModalOpen(false)}/>
 
     </div>
   );

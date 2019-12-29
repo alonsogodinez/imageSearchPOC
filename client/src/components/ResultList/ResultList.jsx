@@ -1,7 +1,6 @@
 import React from 'react';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-// import tileData from './tileData';
 import useStyles from './styles'
 
 export default function ResultList({results}) {
