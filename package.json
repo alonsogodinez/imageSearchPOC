@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start-server": "cd server && yarn start",
-    "start-server:dev": "cd server && yarn dev",
+    "heroku-prebuild": "cd server && npm install",
+    "start-server": "cd server && npm start",
+    "start-server:dev": "cd server && npm dev",
     "start": "npm run start-server",
     "dev": "cd client && yarn start & yarn start-server:dev",
     "test": "echo \"Error: no test specified\" && exit 1",
