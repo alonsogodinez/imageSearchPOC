@@ -1,25 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import SearchBar from './components/SearchBar/SearchBar'
+import ResultList from './components/ResultList/ResultList'
+import UploadModal from './components/UploadModal/UploadModal'
 
 function App() {
+  const [searchText, setSearchText] = useState("")
+  const [results, setResults] = useState([])
+  const [isUploadModalOpen, setUploadModalOpen] = useState(false);
+
+  const getImages = () => {
+    (async () => {
+      try {
+        const {images} = await (await fetch("/search")).json()
+        return setResults(images)
+      } catch(e) {
+        console.log(e)
+      }
+    })()
+  }
+
+  useEffect(() => getImages(), [searchText])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="App">
+      <SearchBar
+        searchText={searchText}
+        setSearchText={setSearchText}
+        setUploadModalOpen={setUploadModalOpen}/>
+      <ResultList results={results}/>
+      <UploadModal
+        isUploadModalOpen={isUploadModalOpen}
+        setUploadModalOpen={setUploadModalOpen}/>
+    </main>
   );
 }
 

@@ -8,7 +8,8 @@ module.exports = {
     S3: {
         ACCESS_KEY:  process.env.S3_ACCESS_KEY,
         SECRET_KEY: process.env.S3_SECRET_KEY,
-        BUCKET: process.env.S3_BUCKET
+        BUCKET: process.env.S3_BUCKET,
+        BUCKET_URL: process.env.S3_BUCKET_URL
     }
 
 };
