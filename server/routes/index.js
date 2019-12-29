@@ -31,7 +31,7 @@ router.post('/upload', upload.array("image", 3), (req, res) => {
 
 router.get('/search', async (req, res) => {
   // const images = await S3Service.getImages()
-  const images = await Image.findAll()
+  const images = await Image.find()
   await res.json({images});
 
 });
