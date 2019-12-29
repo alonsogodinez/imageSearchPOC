@@ -9,7 +9,7 @@
     "start-server:dev": "cd server && yarn dev",
     "start": "npm run start-server",
     "dev": "cd client && yarn start & npm run start-server:dev",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
