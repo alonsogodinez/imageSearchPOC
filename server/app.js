@@ -30,7 +30,7 @@ app.use(express.static(reactAppPath));
 app.use('/', indexRouter);
 
 app.get('/*', function (req, res) {
-  res.sendFile(reactAppPath + '/index.html');
+  res.sendFile('index.html');
 });
 
 // catch 404 and forward to error handler
