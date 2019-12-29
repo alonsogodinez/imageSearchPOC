@@ -6,7 +6,6 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const dbUtils = require('utils/db');
 
-console.log("dbutils", dbUtils.getMongoURI())
 mongoose.connect(dbUtils.getMongoURI(), { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("connection has closed"));
 

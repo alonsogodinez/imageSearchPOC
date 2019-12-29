@@ -10,6 +10,10 @@ module.exports = {
         SECRET_KEY: process.env.S3_SECRET_KEY,
         BUCKET: process.env.S3_BUCKET,
         BUCKET_URL: process.env.S3_BUCKET_URL
+    },
+    ALGOLIA: {
+        ID: process.env.ALGOLIA_ID,
+        KEY: process.env.ALGOLIA_KEY,
+        INDEX: process.env.ALGOLIA_INDEX
     }
-
 };

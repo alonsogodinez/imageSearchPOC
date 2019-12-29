@@ -4,12 +4,12 @@
   "description": "",
   "scripts": {
     "heroku-prebuild": "cd server && npm install",
-    "start-server": "cd server && npm start",
-    "start-server:dev": "cd server && npm dev",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "start": "npm run start-server",
+    "start-server": "cd server && npm start",
+    "start-server:dev": "cd server && npm run dev",
     "dev": "cd client && yarn start & yarn start-server:dev",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "cross-env": "^6.0.3",

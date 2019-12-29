@@ -8,3 +8,5 @@ const s3 = new aws.S3({
 module.exports.getInstance = () => s3
 module.exports.getBucket = () => S3_Config.BUCKET
 module.exports.getBucketURL = () => S3_Config.BUCKET_URL
+
+module.exports.buildImageURL = (key) => `${S3_Config.BUCKET_URL}${key}`;

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {upload} = require('middlewares/upload')
-// const S3Service = require('services/s3')
 const ocrService = require('services/ocr')
+const algoliaService = require('services/algolia')
 const Image = require('models/image')
 
 const storeImage = file => {
@@ -20,7 +20,6 @@ router.post('/upload', upload.array("image", 3), (req, res) => {
   const promises = req.files.map(storeImage)
   return Promise.all(promises)
     .then(images => {
-      console.log("acaaa", images)
       res.json({images})
     })
     .catch((err) => {
@@ -30,9 +29,13 @@ router.post('/upload', upload.array("image", 3), (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
-  // const images = await S3Service.getImages()
-  const images = await Image.find()
-  await res.json({images});
+  const {searchText} = req.query
+  try {
+    const {hits: images} = await algoliaService.search(searchText)
+    await res.json({images});
+  } catch (e) {
+    res.sendStatus(503)
+  }
 
 });
 

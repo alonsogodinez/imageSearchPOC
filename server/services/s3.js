@@ -3,7 +3,6 @@ const s3Utils = require("utils/s3")
 
 const s3 = s3Utils.getInstance()
 const Bucket = s3Utils.getBucket()
-const BucketURL = s3Utils.getBucketURL()
 
 
 const listObjectPromise = (params) => new Promise((resolve, reject)  => {
@@ -13,12 +12,10 @@ const listObjectPromise = (params) => new Promise((resolve, reject)  => {
   })
 })
 
-const buildImageURL = (key) => `${BucketURL}${key}`;
-
 module.exports.getImages = async () => {
   const {Contents} =  await listObjectPromise({Bucket})
   return Contents.map(image => ({
-    url: buildImageURL(image.Key),
+    url: s3Utils.buildImageURL(image.Key),
     name: image.Key
   }))
 }
