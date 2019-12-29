@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd client && yarn install && yarn build",
+    "heroku-prebuild": "cd client && yarn install",
+    "build": "cd client && yarn build",
     "start-server": "cd server && yarn start",
     "start-server:dev": "cd server && yarn dev",
-    "start": "npm run start-server",
-    "dev": "cd client && yarn start & npm run start-server:dev",
+    "start": "yarn start-server",
+    "dev": "cd client && yarn start & yarn start-server:dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
