@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-client": "cd client && yarn build",
+    "build": "cd client && yarn build",
     "start-server": "cd server && yarn start",
     "start-server:dev": "cd server && yarn dev",
-    "start": "npm run build-client && npm run start-server",
+    "start": "npm run start-server",
     "dev": "cd client && yarn start & npm run start-server:dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
   },
   "repository": {
     "type": "git",
