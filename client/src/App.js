@@ -27,9 +27,12 @@ function App() {
     })()
   }
 
-
   useEffect(() => getImages(), [])
   useEffect(() => getImages(), [searchText])
+
+  const addMoreResults = (moreResults) => {
+    setResults([...results, ...moreResults])
+  }
 
   return (
     <main className="App">
@@ -40,6 +43,7 @@ function App() {
       <ResultList results={results}/>
       <UploadModal
         isUploadModalOpen={isUploadModalOpen}
+        addMoreResults={addMoreResults}
         setUploadModalOpen={setUploadModalOpen}/>
     </main>
   );
