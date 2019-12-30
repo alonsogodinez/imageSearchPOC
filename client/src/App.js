@@ -40,11 +40,15 @@ function App() {
         searchText={searchText}
         setSearchText={setSearchText}
         setUploadModalOpen={setUploadModalOpen}/>
-      <ResultList results={results}/>
+
+      <ResultList
+        results={results}/>
+
       <UploadModal
-        isUploadModalOpen={isUploadModalOpen}
+        isOpen={isUploadModalOpen}
         addMoreResults={addMoreResults}
-        setUploadModalOpen={setUploadModalOpen}/>
+        setModalOpen={setUploadModalOpen}/>
+
     </main>
   );
 }

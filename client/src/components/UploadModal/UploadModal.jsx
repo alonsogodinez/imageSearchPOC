@@ -5,7 +5,7 @@ import {DropzoneDialog} from 'material-ui-dropzone'
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress'
 
-export default function UploadModal({ isUploadModalOpen, setUploadModalOpen, addMoreResults}) {
+export default function UploadModal({ isOpen, setModalOpen, addMoreResults}) {
   const [isLoading, setLoading] = useState(false)
   const classes = useStyles()
   const uploadImages = (images) => {
@@ -20,7 +20,7 @@ export default function UploadModal({ isUploadModalOpen, setUploadModalOpen, add
       .catch(error => console.error('Error:', error))
       .finally(() => {
         setLoading(false)
-        setUploadModalOpen(false);
+        setModalOpen(false);
       })
   }
 
@@ -28,12 +28,13 @@ export default function UploadModal({ isUploadModalOpen, setUploadModalOpen, add
     <Fragment>
       <Backdrop
         className={classes.backdrop}
+        timeout={60000}
         style={{zIndex: 1301}}
         open={isLoading}>
         <CircularProgress color="inherit" />
       </Backdrop>
       <DropzoneDialog
-        open={isUploadModalOpen}
+        open={isOpen}
         dialogTitle="Upload an Image"
         dropzoneText="Drag an image here or click"
         onSave={uploadImages}
@@ -42,7 +43,7 @@ export default function UploadModal({ isUploadModalOpen, setUploadModalOpen, add
         showPreviews={false}
         acceptedFiles={['image/*']}
         maxFileSize={5000000}
-        onClose={() => setUploadModalOpen(false)}/>
+        onClose={() => setModalOpen(false)}/>
 
     </Fragment>
   );
