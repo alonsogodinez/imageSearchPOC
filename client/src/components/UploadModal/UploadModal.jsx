@@ -28,7 +28,6 @@ export default function UploadModal({ isOpen, setModalOpen, addMoreResults}) {
     <Fragment>
       <Backdrop
         className={classes.backdrop}
-        timeout={60000}
         style={{zIndex: 1301}}
         open={isLoading}>
         <CircularProgress color="inherit" />

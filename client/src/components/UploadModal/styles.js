@@ -12,4 +12,7 @@ export default makeStyles(theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  backdrop: {
+    backgroundColor: "rgba(0,0,0,0.7)"
+  }
 }));
