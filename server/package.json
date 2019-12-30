@@ -4,17 +4,20 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_PATH=. node ./bin/www",
-    "dev": "cross-env NODE_PATH=. nodemon"
+    "dev": "cross-env NODE_PATH=. nodemon",
+    "test": "cross-env NODE_PATH=. mocha --timeout 8000"
   },
   "dependencies": {
     "algoliasearch": "^3.35.1",
     "aws-sdk": "^2.596.0",
+    "chai": "^4.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "mocha": "^6.2.2",
     "mongoose": "^5.8.3",
     "mongoose-algolia": "^1.9.1",
     "morgan": "~1.9.1",
